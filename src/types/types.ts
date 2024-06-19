@@ -5,6 +5,7 @@ export interface Parametros {
 }
 
 export interface Escola {
+  cod?: number
   nome?: string
   cidade?: string
   estado?: string

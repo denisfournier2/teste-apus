@@ -8,7 +8,7 @@ import * as S from "./styles"
 export default function Home() {
   const navigation = useNavigate()
 
-  // const handleCreate = async (body: IPokemonProps) => {
+  // const handleCreate = async (body: ) => {
   //   try {
   //     if (body) {
   //       const requisition = await create({
