@@ -10,4 +10,5 @@ export interface Escola {
   cidade?: string
   estado?: string
   nota?: number
+  nota2?: number
 }

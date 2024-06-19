@@ -7,4 +7,5 @@ import { fonts } from "../../../theme/fonts";
 export const Container = styled.div`
   display: flex;
   gap: 24px;
+  padding-bottom: 32px;
 ` 

@@ -1,14 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/atoms/button"
 import { Container } from "../../components/atoms/container"
 import { Actions } from "../../components/molecules/actions"
 import * as S from "./styles"
 import { Lista } from "../../components/molecules/lista"
-import { Escola } from "../../types/types"
+import { Escola, Parametros } from "../../types/types"
+import { list } from "../../service/api"
 
 export default function Home() {
   const navigation = useNavigate()
+  const [escolas, setEscolas] = useState<Escola[]>([])
 
   // const handleCreate = async (body: ) => {
   //   try {
@@ -32,6 +34,30 @@ export default function Home() {
   //     setLoading(false)
   //   }
   // }
+  const handleList = async (param:Parametros) => {
+    const req = await list(param)
+
+    req[1].map(escola => {
+      const formatEscola = {
+        cod: escola.cod,
+        nome: escola.nome,
+        cidade: escola.cidade,
+        estado: escola.estado,
+        nota: escola.idebAF,
+        nota2: escola.idebAI
+      }
+      escolas.push(formatEscola)
+    })
+  }
+
+  useEffect(() => {
+    handleList({ areaVerde: true, biblioteca: true, cozinha: true })
+  }, [])
+
+  useEffect(() => {
+    console.log(escolas)
+  }, [escolas])
+
   const mock:Escola[] = [
     {cod: 1, nome:"escola", cidade:"Taubate", estado:"SP", nota:1},
     {cod: 2, nome:"escola2", cidade:"Taubate2", estado:"SP", nota:2},
@@ -43,7 +69,7 @@ export default function Home() {
     <Container>
       <S.Content>
         <Actions />
-        <Lista escolas={mock} />
+        <Lista escolas={escolas} />
       </S.Content>
     </Container>
   )

@@ -8,7 +8,7 @@ export const Lista = (props: { escolas: Escola[]; }) => {
     <S.Container>
       <S.ListTable cellSpacing={0}>
         <S.ListTHead>
-          <S.ListTr>
+          <S.ListTr impar={0}>
             <S.ListTh>Nome da escola</S.ListTh>
             <S.ListTh>Cidade</S.ListTh>
             <S.ListTh>Estado</S.ListTh>
@@ -20,7 +20,7 @@ export const Lista = (props: { escolas: Escola[]; }) => {
           {props.escolas.map((escola, index) => {
             return (
               <S.ListTr impar={index%2} key={escola.cod}>
-                <S.ListTd>{escola.nome}</S.ListTd>
+                <S.ListTd style={{ width:"40%" }}>{escola.nome}</S.ListTd>
                 <S.ListTd>{escola.cidade}</S.ListTd>
                 <S.ListTd>{escola.estado}</S.ListTd>
                 <S.ListTd>{escola.nota}</S.ListTd>
