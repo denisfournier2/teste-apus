@@ -12,6 +12,9 @@ export const Button = styled.button`
   font-size: ${sizes.subtitle};
   font-weight: 600;
   font-family: ${fonts.body};
+  display: flex;
+  align-items: center;
+  gap: 12px;
   cursor: pointer;
 
   &:hover {

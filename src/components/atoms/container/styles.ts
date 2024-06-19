@@ -4,7 +4,7 @@ import {colors} from '../../../theme/colors'
 export const Container = styled.main`
   position: relative;
   /* min-width: 100vw; */
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;

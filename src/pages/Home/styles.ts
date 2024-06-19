@@ -10,7 +10,6 @@ const spinAnimation = keyframes`
 `;
 
 export const Content = styled.section`
-
 `;
 
 export const ButtonContainer = styled.div`
