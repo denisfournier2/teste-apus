@@ -1,11 +1,10 @@
 import * as S from './styles';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { Button } from '../button';
+import { useNavigate } from 'react-router-dom';
 
 export const Search = (props: {escola: string | undefined}) => {
-  const handleBack = () => {
-    window.history.back()
-  }
+  const navigate = useNavigate()
 
   return(
     <S.SearchBar>
@@ -16,8 +15,8 @@ export const Search = (props: {escola: string | undefined}) => {
         </S.SearchPillEscola>
       </S.SearchPill>
       {props.escola && 
-        <Button onClick={() => {}}>
-          <FaArrowLeftLong onClick={() => handleBack()} /> Voltar
+        <Button onClick={() => navigate('/')}>
+          <FaArrowLeftLong /> Voltar
         </Button>
       }
     </S.SearchBar>

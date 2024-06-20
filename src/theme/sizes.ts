@@ -4,5 +4,6 @@ export const sizes = {
   subtitle: '16px',
   table: '14px',
   body: '13px',
-  caption: '12px'
+  caption: '12px',
+  cardTitle: '32px'
 }

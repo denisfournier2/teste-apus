@@ -5,6 +5,7 @@ import * as S from "./styles"
 import { Lista } from "../../components/molecules/lista"
 import { Escola, Parametros } from "../../types/types"
 import { list } from "../../service/api"
+import { Search } from "../../components/atoms/search"
 
 export default function Home(props: { onPress:(T:number) => void, defNomeEscola: (T:string) => void; }) {
   const [escolas, setEscolas] = useState<Escola[]>([])
@@ -47,6 +48,7 @@ export default function Home(props: { onPress:(T:number) => void, defNomeEscola:
 
   return (
     <Container>
+      <Search escola={undefined} />
       <S.Content>
         <Actions parametros={parametros} setParametros={setParametros} />
         <Lista defNomeEscola={props.defNomeEscola} onPress={props.onPress} loading={loading} escolas={escolas} />

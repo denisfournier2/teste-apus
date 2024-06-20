@@ -34,7 +34,6 @@ function App() {
   return (
     <>
      <Header />
-     <Search escola={nomeEscola} />
      <RouterProvider router={routes} />
     </>
   )

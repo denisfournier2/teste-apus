@@ -3,7 +3,7 @@ import { IButtonProps } from "./types";
 
 export const Button = (props: IButtonProps) => {
   return(
-    <S.Button active={props.active ? props.active : undefined} onClick={props.onClick}>
+    <S.Button ativo={props.ativo} onClick={props.onClick}>
       {props.children}
     </S.Button>
   )

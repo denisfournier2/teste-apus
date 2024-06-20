@@ -42,7 +42,7 @@ export const Lista = (props: { loading:boolean, escolas: Escola[], onPress:(T: n
                 <S.ListTd style={{ width:"200px" }}>{escola.cidade}</S.ListTd>
                 <S.ListTd style={{ width:"150px" }}>{escola.estado}</S.ListTd>
                 <S.ListTd style={{ width:"150px" }}>{Math.round(escola.nota as number)}, {Math.round(escola.nota2 as number)}</S.ListTd>
-                <S.ListTd style={{ width:"100px" }}><Button onClick={() => {handleClick(escola.cod as number, escola.nome as string)}}>Consultar</Button></S.ListTd>
+                <S.ListTd style={{ width:"100px" }}><Button ativo={false} onClick={() => {handleClick(escola.cod as number, escola.nome as string)}}>Consultar</Button></S.ListTd>
               </S.ListTr>
             )
           })}

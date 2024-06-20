@@ -14,3 +14,20 @@ export interface Escola {
   idebAF?: number
   idebAI?: number
 }
+
+export interface ICard {
+  cozinha: number
+  patioVerde: number
+  biblioteca: number
+  banheiro: number
+  salas: number
+  horta: number
+  professores: number
+  veiculo: number
+  enfermaria: number
+}
+
+export interface ICardList {
+  key: string
+  value: boolean | string | number
+}

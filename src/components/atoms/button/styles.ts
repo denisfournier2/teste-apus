@@ -4,14 +4,14 @@ import { sizes } from '../../../theme/sizes'
 import { fonts } from '../../../theme/fonts'
 
 type IProps = {
-  active?: boolean
+  ativo?: boolean
 }
 
 export const Button = styled.button<IProps>`
   padding: 6px 22px;
   border: 1px solid ${colors.backgroundBlue};
   border-radius: 12px;
-  background: ${prop => prop.active ? colors.active : colors.backgroundBlue};
+  background: ${prop => prop.ativo ? colors.active : colors.backgroundBlue};
   color: ${colors.white};
   font-size: ${sizes.subtitle};
   font-weight: 600;
