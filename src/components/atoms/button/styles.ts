@@ -3,12 +3,15 @@ import { colors } from '../../../theme/colors'
 import { sizes } from '../../../theme/sizes'
 import { fonts } from '../../../theme/fonts'
 
+type IProps = {
+  active?: boolean
+}
 
-export const Button = styled.button`
+export const Button = styled.button<IProps>`
   padding: 6px 22px;
   border: 1px solid ${colors.backgroundBlue};
   border-radius: 12px;
-  background: ${colors.backgroundBlue};
+  background: ${prop => prop.active ? colors.active : colors.backgroundBlue};
   color: ${colors.white};
   font-size: ${sizes.subtitle};
   font-weight: 600;

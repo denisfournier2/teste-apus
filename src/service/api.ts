@@ -8,9 +8,7 @@ export const Api = axios.create({
 
 export async function list(parametros:Parametros): Promise<Array<Escola[]>> {
   const qs = formatQs(parametros)
-  console.log(formatQs(parametros))
-  const { data: response } = await Api.get(`escolas/buscaavancada?areaVerde=1&biblioteca=1&cozinha=1`)
-  // const { data: response } = await Api.get(`escolas/buscaavancada?${qs}`)
+  const { data: response } = await Api.get(`escolas/buscaavancada?${qs}`)
   return response
 }
 

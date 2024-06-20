@@ -9,6 +9,7 @@ import { list } from "../../service/api"
 export default function Home() {
   const [escolas, setEscolas] = useState<Escola[]>([])
   const [loading, setLoading] = useState<boolean>(false)
+  const [parametros, setParametros] = useState<Parametros>({ areaVerde: false, biblioteca: false, cozinha: false })
 
   const handleList = async (param:Parametros) => {
     const arr:Escola[] = []
@@ -36,13 +37,14 @@ export default function Home() {
   }
 
   useEffect(() => {
-    handleList({ areaVerde: true, biblioteca: true, cozinha: true })
-  }, [])
+    setEscolas([])
+    handleList(parametros)
+  }, [parametros])
 
   return (
     <Container>
       <S.Content>
-        <Actions />
+        <Actions parametros={parametros} setParametros={setParametros} />
         <Lista loading={loading} escolas={escolas} />
       </S.Content>
     </Container>

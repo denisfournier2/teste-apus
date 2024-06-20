@@ -3,4 +3,5 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
   onClick: () => void
   loading?: boolean
   table?: boolean
+  active?: boolean
 }
