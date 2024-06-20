@@ -7,7 +7,7 @@ import { Escola, Parametros } from "../../types/types"
 import { list } from "../../service/api"
 import { Search } from "../../components/atoms/search"
 
-export default function Home(props: { onPress:(T:number) => void, defNomeEscola: (T:string) => void; }) {
+export default function Home() {
   const [escolas, setEscolas] = useState<Escola[]>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [parametros, setParametros] = useState<Parametros>({ areaVerde: false, biblioteca: false, cozinha: false })
@@ -38,10 +38,6 @@ export default function Home(props: { onPress:(T:number) => void, defNomeEscola:
   }
 
   useEffect(() => {
-    props.defNomeEscola('')
-  }, [])
-
-  useEffect(() => {
     setEscolas([])
     handleList(parametros)
   }, [parametros])
@@ -51,7 +47,7 @@ export default function Home(props: { onPress:(T:number) => void, defNomeEscola:
       <Search escola={undefined} />
       <S.Content>
         <Actions parametros={parametros} setParametros={setParametros} />
-        <Lista defNomeEscola={props.defNomeEscola} onPress={props.onPress} loading={loading} escolas={escolas} />
+        <Lista loading={loading} escolas={escolas} />
       </S.Content>
     </Container>
   )

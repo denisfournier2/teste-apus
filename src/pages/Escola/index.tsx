@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import { Container } from "../../components/atoms/container";
 import { find } from "../../service/api";
 import { Card } from "../../components/molecules/card";
-import {ICard } from "../../types/types";
+import {ICard, ICardList } from "../../types/types";
 import * as S from './styles';
 import { Search } from "../../components/atoms/search";
 import { formatInfoForCard } from "../../service/functions/formatArray";
 
-export default function Escola(props: { cod: number | undefined }) {
+export default function Escola() {
 
   const idEscola = location.pathname.split('/')[2]
   const [escola, setEscola] = useState<ICard>({})
   const [loading, setLoading] = useState<boolean>(false)
-  const [cardList, setCardList] = useState<ICard[]>()
+  const [cardList, setCardList] = useState<ICardList[]>()
 
   const handleEscola = async (id:string) => {
     try {
@@ -42,8 +42,8 @@ export default function Escola(props: { cod: number | undefined }) {
       <S.Title>{escola.nome}</S.Title>
       <S.Subtitle>{`Cidade: ${escola.nomeMunicipio} - ${escola.siglaUf}`}</S.Subtitle>
       <S.Cards>
-        {cardList?.map(card => (
-          <Card key={card.key} color={1} info={card.key} value={card.value} />
+        {cardList?.map(( card, index ) => (
+          <Card key={card.key} color={index%4} info={card.key} value={card.value} />
         ))}
       </S.Cards>
     </Container>

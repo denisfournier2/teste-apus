@@ -1,9 +1,13 @@
 import styled from 'styled-components'
-import { colors } from '../../../theme/colors'
+import { colors, card } from '../../../theme/colors'
 import { sizes } from '../../../theme/sizes'
 import { fonts } from '../../../theme/fonts'
 
-type IProp = {
+interface Color {
+  index: number
+}
+
+interface Prop extends Color {
   size: number
 }
 
@@ -24,30 +28,31 @@ export const Card = styled.div`
   /* color: ${colors.text}; */
 `
 
-export const Container = styled.div`
+export const Container = styled.div<Color>`
   width: 179px;
   height: 107px;
-  background: #F8E3D0;
+  background: ${prop => card[prop.index].fundo};
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
-export const ValueContainer = styled.div<IProp>`
+export const ValueContainer = styled.div<Prop>`
+  background: ${prop => card[prop.index].fundoNumero};
+  color: ${prop => card[prop.index].numero};
+
   min-width: 50px;
   min-height: 50px;
   max-width: 159px;
   max-height: 87px;
-  padding: 0 8px;
-  background: #F9D4B2;
-  color: #E35417;
+  padding: 8px;
   border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: ${prop => prop.size > 2 ? sizes.body : sizes.cardTitle};
+  font-size: ${prop => prop.size > 10 ? sizes.body : prop.size > 2 ? sizes.heading : sizes.cardTitle};
 `
 
 export const Title = styled.span`

@@ -16,18 +16,18 @@ export interface Escola {
 }
 
 export interface ICard {
-  cozinha: number
-  patioVerde: number
-  biblioteca: number
-  banheiro: number
-  salas: number
-  horta: number
-  professores: number
-  veiculo: number
-  enfermaria: number
+  nome?: string
+  nomeMunicipio?: string
+  siglaUf?: string
 }
 
 export interface ICardList {
   key: string
   value: boolean | string | number
+}
+
+export interface ICardColor {
+  numero: string
+  fundo: string
+  fundoNumero: string
 }

@@ -4,12 +4,10 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import * as S from './styles';
 import { useNavigate } from 'react-router-dom';
 
-export const Lista = (props: { loading:boolean, escolas: Escola[], onPress:(T: number) => void, defNomeEscola: (T:string) => void; }) => {
+export const Lista = (props: { loading:boolean, escolas: Escola[] }) => {
   const navigate = useNavigate()
 
-  const handleClick = (cod: number, nome: string) => {
-    props.onPress(cod)
-    props.defNomeEscola(nome)
+  const handleClick = (cod: number) => {
     navigate(`/escola/${cod}`)
   }
 
@@ -42,7 +40,7 @@ export const Lista = (props: { loading:boolean, escolas: Escola[], onPress:(T: n
                 <S.ListTd style={{ width:"200px" }}>{escola.cidade}</S.ListTd>
                 <S.ListTd style={{ width:"150px" }}>{escola.estado}</S.ListTd>
                 <S.ListTd style={{ width:"150px" }}>{Math.round(escola.nota as number)}, {Math.round(escola.nota2 as number)}</S.ListTd>
-                <S.ListTd style={{ width:"100px" }}><Button ativo={false} onClick={() => {handleClick(escola.cod as number, escola.nome as string)}}>Consultar</Button></S.ListTd>
+                <S.ListTd style={{ width:"100px" }}><Button ativo={false} onClick={() => {handleClick(escola.cod as number)}}>Consultar</Button></S.ListTd>
               </S.ListTr>
             )
           })}
