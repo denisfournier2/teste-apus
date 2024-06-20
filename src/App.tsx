@@ -9,23 +9,32 @@ import Escola from './pages/Escola'
 import { useState } from 'react'
 
 function App() {
-  const [escola, setEscola] = useState<string>()
+  const [escola, setEscola] = useState<number | undefined>()
+  const [nomeEscola, setNomeEscola] = useState<string>('')
+
+  const onPress = (cod: number) => {
+    setEscola(cod)
+  }
+
+  const defNomeEscola = (nome: string) => {
+    setNomeEscola(nome)
+  }
 
   const routes = createBrowserRouter([
     {
       path: '/',
-      element: <Home />
+      element: <Home onPress={onPress} defNomeEscola={defNomeEscola}  />
     },
     {
-      path: '/escola',
-      element: <Escola />
+      path: '/escola/:id',
+      element: <Escola cod={escola} />
     }
   ])
 
   return (
     <>
      <Header />
-     <Search escola={escola} />
+     <Search escola={nomeEscola} />
      <RouterProvider router={routes} />
     </>
   )

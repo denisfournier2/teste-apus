@@ -3,6 +3,9 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { Button } from '../button';
 
 export const Search = (props: {escola: string | undefined}) => {
+  const handleBack = () => {
+    window.history.back()
+  }
 
   return(
     <S.SearchBar>
@@ -14,7 +17,7 @@ export const Search = (props: {escola: string | undefined}) => {
       </S.SearchPill>
       {props.escola && 
         <Button onClick={() => {}}>
-          <FaArrowLeftLong /> Voltar
+          <FaArrowLeftLong onClick={() => handleBack()} /> Voltar
         </Button>
       }
     </S.SearchBar>
