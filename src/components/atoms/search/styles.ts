@@ -8,7 +8,7 @@ export const SearchBar = styled.div`
   width: 90%;
   justify-content: space-between;
   margin: 0 5%;
-  padding: 32px 0;
+  padding: 24px 0;
 `
 
 export const SearchPill = styled.div`

@@ -11,4 +11,6 @@ export interface Escola {
   estado?: string
   nota?: number
   nota2?: number
+  idebAF?: number
+  idebAI?: number
 }

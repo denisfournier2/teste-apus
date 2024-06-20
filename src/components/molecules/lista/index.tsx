@@ -1,8 +1,9 @@
 import { Escola } from '../../../types/types';
 import { Button } from '../../atoms/button';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import * as S from './styles';
 
-export const Lista = (props: { escolas: Escola[]; }) => {
+export const Lista = (props: { loading:boolean, escolas: Escola[]; }) => {
 
   return (
     <S.Container>
@@ -17,17 +18,31 @@ export const Lista = (props: { escolas: Escola[]; }) => {
           </S.ListTr>
         </S.ListTHead>
         <S.ListTBody>
-          {props.escolas.map((escola, index) => {
+          {props.loading && (
+            <S.ListTr impar={0}>
+              <S.ListTd colSpan={4}>
+                <S.LoadingContainer>
+                  <S.Loading><AiOutlineLoading3Quarters /></S.Loading>
+                </S.LoadingContainer>
+              </S.ListTd>
+            </S.ListTr>
+          )}
+          {props.escolas.length > 0 && props.escolas.map((escola, index) => {
             return (
               <S.ListTr impar={index%2} key={escola.cod}>
-                <S.ListTd style={{ width:"40%" }}>{escola.nome}</S.ListTd>
-                <S.ListTd>{escola.cidade}</S.ListTd>
-                <S.ListTd>{escola.estado}</S.ListTd>
-                <S.ListTd>{escola.nota}</S.ListTd>
+                <S.ListTd>{escola.nome}</S.ListTd>
+                <S.ListTd style={{ width:"200px" }}>{escola.cidade}</S.ListTd>
+                <S.ListTd style={{ width:"150px" }}>{escola.estado}</S.ListTd>
+                <S.ListTd style={{ width:"150px" }}>{Math.round(escola.nota as number)}, {Math.round(escola.nota2 as number)}</S.ListTd>
                 <S.ListTd style={{ width:"100px" }}><Button onClick={() => {}}>Consultar</Button></S.ListTd>
               </S.ListTr>
             )
           })}
+          {props.escolas.length === 0 && props.loading === false && (
+            <S.ListTr impar={0}>
+              <S.ListTd colSpan={4}><S.SemDados>Não existem registros</S.SemDados></S.ListTd>
+            </S.ListTr>
+          )}
         </S.ListTBody>
       </S.ListTable>
     </S.Container>
